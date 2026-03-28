@@ -7,11 +7,17 @@ O objetivo do projeto é aplicar conceitos reais de desenvolvimento front-end, c
 ⚠️ Este projeto está em desenvolvimento.
 
 🛠️ Tecnologias utilizadas
+
 Angular 17+
+
 TypeScript
+
 Angular Material UI
+
 RxJS
+
 JSON Server (API mock)
+
 NgRx (em implementação)
 
 🎯 Funcionalidades (em progresso)
