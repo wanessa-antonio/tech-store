@@ -1,0 +1,10 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Angular Básico",
+      "price": 99,
+      "level": "iniciante"
+    }
+  ]
+}
