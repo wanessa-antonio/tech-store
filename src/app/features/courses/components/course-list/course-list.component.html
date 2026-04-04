@@ -1,10 +1,11 @@
-
-<h2>Lista de Cursos</h2>
-
-<div *ngFor="let course of courses">
-  <p><strong>{{ course.title }}</strong></p>
-  <p>Preço: R$ {{ course.price }}</p>
-  <p>Nível: {{ course.level }}</p>
-  <hr>
+<div class="course-container">
+  <mat-card *ngFor="let course of courses" class="course-card">
+    <mat-card-title>{{ course.title }}</mat-card-title>
+    <mat-card-content>
+      <p>Preço: R$ {{ course.price }}</p>
+      <p>Nível: {{ course.level }}</p>
+ 
+   </mat-card-content>
+  </mat-card>
 </div>
 
