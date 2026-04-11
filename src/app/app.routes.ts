@@ -9,8 +9,15 @@ export const routes: Routes = [
         .then(m => m.COURSES_ROUTES)
   },
   {
+    path: 'cart',
+    loadComponent: () =>
+      import('./features/cart/components/cart/cart.component')
+        .then(m => m.CartComponent)
+  },
+  {
     path: '',
     redirectTo: 'courses',
     pathMatch: 'full'
   }
 ];
+
