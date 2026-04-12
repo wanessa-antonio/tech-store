@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { CourseService } from '../../services/course.service';
-import { CartService } from '../../../../core/services/cart.service';
+import { CartService } from '../../../cart/components/cart/cart.service';
+
 
 @Component({
   selector: 'app-course-detail',
@@ -32,6 +33,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.course);
+    this.cartService.addItem(this.course);
+    alert('Curso adicionado ao carrinho!');
   }
 }

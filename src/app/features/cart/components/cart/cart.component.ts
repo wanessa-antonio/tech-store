@@ -1,32 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../../../core/services/cart.service';
+
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <h2>Carrinho</h2>
-
-    <div *ngIf="items.length > 0; else empty">
-      <div *ngFor="let item of items">
-        {{ item.title }} - R$ {{ item.price }}
-      </div>
-    </div>
-
-    <ng-template #empty>
-      <p>Carrinho vazio</p>
-    </ng-template>
-  `
+  templateUrl: './cart.component.html'
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
   items: any[] = [];
 
-  constructor(private cartService: CartService) {}
-
-  ngOnInit(): void {
+  constructor(private cartService: CartService) {
     this.items = this.cartService.getItems();
   }
+
+  removeItem(index: number) {
+    this.cartService.removeItem(index);
+    this.items = this.cartService.getItems();
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+    this.items = [];
+  }
+
+  getTotal() {
+    return this.items.reduce((total, item) => total + item.price, 0);
+  }
 }
+
+

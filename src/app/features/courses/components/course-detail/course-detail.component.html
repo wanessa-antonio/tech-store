@@ -1,13 +1,9 @@
-<div *ngIf="course; else loading">
+<div *ngIf="course">
   <h2>{{ course.title }}</h2>
-
-  <p><strong>Preço:</strong> R$ {{ course.price }}</p>
-  <p><strong>Nível:</strong> {{ course.level }}</p>
+  <p>Preço: R$ {{ course.price }}</p>
+  <p>Nível: {{ course.level }}</p>
 
   <button (click)="addToCart()">Adicionar ao carrinho</button>
 </div>
 
-<ng-template #loading>
-  <p>Carregando curso...</p>
-</ng-template>
 
