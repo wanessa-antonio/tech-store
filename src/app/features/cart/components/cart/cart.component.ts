@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CartService } from '../cart/cart.service';
@@ -9,27 +9,27 @@ import { CartService } from '../cart/cart.service';
   imports: [CommonModule],
   templateUrl: './cart.component.html'
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
 
   items: any[] = [];
 
-  constructor(private cartService: CartService) {
-    this.items = this.cartService.getItems();
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.cartService.items$.subscribe(items => {
+      this.items = items;
+    });
   }
 
   removeItem(index: number) {
     this.cartService.removeItem(index);
-    this.items = this.cartService.getItems();
   }
 
   clearCart() {
     this.cartService.clearCart();
-    this.items = [];
   }
 
   getTotal() {
     return this.items.reduce((total, item) => total + item.price, 0);
   }
 }
-
-

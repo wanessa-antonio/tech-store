@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -24,15 +24,15 @@ import { CartService } from '../app/features/cart/components/cart/cart.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   cartCount = 0;
 
-  constructor(private cartService: CartService) {
-    this.updateCartCount();
-  }
+  constructor(private cartService: CartService) {}
 
-  updateCartCount() {
-    this.cartCount = this.cartService.getItems().length;
+  ngOnInit() {
+    this.cartService.items$.subscribe(items => {
+      this.cartCount = items.length;
+    });
   }
 }
