@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -9,6 +10,10 @@ export class CartService {
 
   getItems() {
     return this.items;
+  }
+
+  getCount() {
+    return this.items.length;
   }
 
   addItem(item: any) {

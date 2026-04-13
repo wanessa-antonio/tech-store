@@ -1,15 +1,38 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CourseListComponent } from './features/courses/components/course-list/course-list.component';
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
+
+import { CartService } from '../app/features/cart/components/cart/cart.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatBadgeModule
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tech-store';
-}
 
+  cartCount = 0;
+
+  constructor(private cartService: CartService) {
+    this.updateCartCount();
+  }
+
+  updateCartCount() {
+    this.cartCount = this.cartService.getItems().length;
+  }
+}
