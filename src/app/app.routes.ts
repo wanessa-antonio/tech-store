@@ -1,7 +1,12 @@
-
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./features/auth/auth.routes')
+        .then(m => m.AUTH_ROUTES)
+  },
   {
     path: 'courses',
     loadChildren: () =>
@@ -11,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () =>
-      import('./features/cart/components/cart/cart.component')
+      import('./features/cart/cart.component')
         .then(m => m.CartComponent)
   },
   {
@@ -20,4 +25,3 @@ export const routes: Routes = [
     pathMatch: 'full'
   }
 ];
-
